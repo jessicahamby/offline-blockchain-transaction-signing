@@ -11,3 +11,25 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+pre code {
+  background-color: #0A1829;
+  border: 1px solid #999;
+  display: block;
+  padding: 20px;
+  color: white;
+}
+
+.font {
+  font-family: 'Square Peg', cursive;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Square+Peg&display=swap');
+
+.footer{
+  display: flex;
+  flex:1;
+  justify-content: center;
+  align-items: center;
+  margin: 2%;
+}
