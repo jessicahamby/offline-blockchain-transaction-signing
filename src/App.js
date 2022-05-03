@@ -97,7 +97,7 @@ function App() {
             <div style={{ display: 'flex', justifyContent: 'space-around', alignItems: 'center' }}>
                 <div>
                     <div>
-                        <h1 class="font">Tx Params for Offline Signing</h1>
+                        <h1 className="font">Tx Params for Offline Signing</h1>
                         <Input value={txParams} handleChange={(e, key) => handleChange(e, key)} />
                         <h4 style={{ textAlign: 'center' }}> OR</h4>
                         <CodeMirror
@@ -108,7 +108,7 @@ function App() {
                             onChange={(value, viewUpdate) => {
                                 console.log('value:', value);
                                 setTxParams({})
-                                setTxParams(JSON.parse(value))
+                                setTxParams(value.toString())
                             }}
                         />
                     </div>
@@ -122,12 +122,12 @@ function App() {
                     <img id="qr" alt="qr" style={{ height: "400px", marginTop: 90 }} />
                 </div>
             </div>
-            <div class="footer">
+            <div className="footer">
                 <div>
-                    <h4 class="font" style={{ fontSize: 40 }}>
+                    <h4 className="font" style={{ fontSize: 40 }}>
                         Hail Blockchain
                     </h4>
-                    <p class="" style={{ fontSize: "1.2rem" }}>
+                    <p className="" style={{ fontSize: "1.2rem" }}>
                         This is an Open Source Project present on Github. This is the web interface for entering the transaction parameters, which generates the QR Code, which in turn will then be Scanned by Private Offline Wallet to sign the transaction params with the safely located Private Key and generate the QR Code of Signed raw Transaction which can be then read by the web interface through the web camera and finally display the signed transaction in JSON format on the screen
                     </p>
 
