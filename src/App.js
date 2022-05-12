@@ -1,62 +1,3 @@
-// import QRCode from 'qrcode';
-// import React from "react";
-// import Input from './components/input';
-
-// function App() {
-
-//     const [txParams, setTxParams] = React.useState({
-//         nonce: '0x00',
-//         gasPrice: '0x09184e72a000',
-//         gasLimit: '0x2710',
-//         to: '0x0000000000000000000000000000000000000000',
-//         value: '0x00',
-//         data: '0x7f7465737432000000000000000000000000000000000000000000000000000000600057',
-//     })
-
-//     React.useEffect(() => {
-//         QRCode.toDataURL(JSON.stringify(txParams))
-//             .then(url => {
-//                 console.log(url)
-//                 document.getElementById("qr").src = url
-//             })
-//             .catch(err => {
-//                 console.error(err)
-//             })
-//     }, [txParams])
-
-//     const handleChange = (e, key) => {
-//         console.log("e", e, key)
-//         setTxParams({ ...txParams, [key]: e.target.value })
-//     }
-
-
-//     return (
-//         <div style={{ display: 'flex', flex: 1, justifyContent: 'space-around', alignItems: 'center', margin: "2%" }}>
-//             <div>
-//                 <h1>Message for Offline Signing</h1>
-//                 <Input handleChange={(e, key) => handleChange(e, key)} />
-//                 <div style={{ display: 'flex', flex: 1, justifyContent: 'space-between', alignItems: 'center', width: "90%" }}>
-//                     <div style={{width: "80%"}}>
-//                         <pre style={{ overflowX: "auto", whiteSpace: "pre-wrap"}}>
-//                             <code>
-//                                 {JSON.stringify(txParams, null, 2)}
-//                             </code>
-//                         </pre>
-//                     </div>
-//                     <img id="qr" alt="qr" height="20%" width="20%"/>
-//                 </div>
-//             </div>
-//             <div>
-
-//             </div>
-//         </div>
-//     );
-// }
-
-// export default App;
-
-
-
 import { javascript } from '@codemirror/lang-javascript';
 import CodeMirror from '@uiw/react-codemirror';
 import QRCode from 'qrcode';
@@ -112,11 +53,6 @@ function App() {
                             }}
                         />
                     </div>
-                    {/* <pre style={{ overflowX: "auto", whiteSpace: "pre-wrap", maxWidth: "92%" }}>
-                        <code>
-                            {JSON.stringify(txParams, null, 2)}
-                        </code>
-                    </pre> */}
                 </div>
                 <div>
                     <img id="qr" alt="qr" style={{ height: "400px", marginTop: 90 }} />
