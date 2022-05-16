@@ -66,6 +66,7 @@ export default function ColorToggleButton() {
                 <ToggleButton value="Generate">Generate</ToggleButton>
                 <ToggleButton value="Read">Read</ToggleButton>
             </ToggleButtonGroup>
+
             {option === "Generate" ? <GenerateQR /> : <ReadQR />}
             <Footer />
         </>

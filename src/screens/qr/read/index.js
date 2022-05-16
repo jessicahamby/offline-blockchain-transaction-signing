@@ -19,6 +19,16 @@ const Input = styled('input')({
     display: 'none',
 });
 
+const styles = {
+    container: { flex: 1, display: 'flex', justifyContent: 'space-between', alignItems: 'center' },
+    qrReader: { width: '50%' },
+    videoContainerStyle: { margin: 40 },
+    uploadFile: { margin: 40, marginTop: 0 },
+    textArea: { width: '40%', },
+    textAreaStyle: { width: '100%' },
+    img: { height: "400px", marginTop: 90 }
+}
+
 const Reader = (props) => {
     const [data, setData] = useState('');
     var options = {
@@ -28,7 +38,6 @@ const Reader = (props) => {
     React.useEffect(() => {
         QRCode.toDataURL(JSON.stringify(data))
             .then(url => {
-                console.log(url)
                 document.getElementById("qr").src = url
             })
             .catch(err => {
@@ -53,17 +62,16 @@ const Reader = (props) => {
         reader.onload = async (e) => {
             const fileBuffer = (e.target.result);
             const temp = await decodeQR(fileBuffer)
-            console.log("temp", temp)
             setData((temp))
         }
         reader.readAsArrayBuffer(e.target.files[0]);
     };
 
     return (
-        <div style={{ flex: 1, display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-            <div style={{ width: '50%' }}>
+        <div style={styles.container}>
+            <div style={styles.qrReader}>
                 <QrReader
-                    videoContainerStyle={{ margin: 40 }}
+                    videoContainerStyle={styles.videoContainerStyle}
                     scanDelay={5000}
                     onResult={(result, error) => {
                         if (!!result) {
@@ -77,7 +85,7 @@ const Reader = (props) => {
                     }}
                 />
 
-                <div style={{margin:40, marginTop:0}}>
+                <div style={styles.uploadFile}>
                     <label htmlFor="contained-button-file">
                         <Input onChange={(e) => showFile(e)} accept="image/*" id="contained-button-file" type="file" />
                         <Button variant="contained" component="span">
@@ -89,11 +97,11 @@ const Reader = (props) => {
                 </div>
 
             </div>
-            <div style={{ width: '40%', }}>
-                <img id="qr" alt="qr" style={{ height: "400px", marginTop: 90 }} />
+            <div style={styles.textArea}>
+                <img id="qr" alt="qr" style={styles.img} />
                 <CodeMirror
                     options={options}
-                    style={{ width: '100%' }}
+                    style={styles.textAreaStyle}
                     value={beautify(data, { indent_size: 2, space_in_empty_paren: true })}
                     height="200px"
                     placeholder="Scan the QR and payload will be populated here"

@@ -6,6 +6,24 @@ import React from "react";
 import Input from '../../../components/input';
 import defaultTxParams from '../../../default/txParams';
 
+const styles = {
+    container: {
+        margin: "2%"
+    },
+    row: {
+        display: 'flex',
+        justifyContent: 'space-around',
+        alignItems: 'center'
+    },
+    text: {
+        textAlign: 'center'
+    },
+    qr: {
+        height: "400px",
+        marginTop: 90
+    }
+}
+
 function App() {
 
     const [txParams, setTxParams] = React.useState(defaultTxParams)
@@ -13,7 +31,6 @@ function App() {
     React.useEffect(() => {
         QRCode.toDataURL(JSON.stringify(txParams))
             .then(url => {
-                console.log(url)
                 document.getElementById("qr").src = url
             })
             .catch(err => {
@@ -30,16 +47,16 @@ function App() {
     }
 
     return (
-        <div style={{ margin: "2%" }}>
-            <div style={{ display: 'flex', justifyContent: 'space-around', alignItems: 'center' }}>
+        <div style={styles.container}>
+            <div style={styles.row}>
                 <div>
                     <div>
                         <h1 className="font">Tx Params for Offline Signing</h1>
                         <Input value={txParams} handleChange={(e, key) => handleChange(e, key)} />
-                        <h4 style={{ textAlign: 'center' }}> OR</h4>
+                        <h4 style={styles.text}> OR</h4>
                         <CodeMirror
                             options={options}
-                            value=""
+                            // value={beautify(JSON.stringify(txParams), { indent_size: 2, space_in_empty_paren: true })}
                             height="200px"
                             placeholder="Enter/Paste the raw data here"
                             extensions={[javascript({ jsx: true })]}
@@ -52,7 +69,7 @@ function App() {
                     </div>
                 </div>
                 <div>
-                    <img id="qr" alt="qr" style={{ height: "400px", marginTop: 90 }} />
+                    <img id="qr" alt="qr" style={styles.qr} />
                 </div>
             </div>
 
